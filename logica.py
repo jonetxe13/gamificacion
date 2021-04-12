@@ -4,6 +4,8 @@ import numpy as np
 
 # pygame.init()
 
+GameState = True
+
 black = ( 0, 0, 0)
 
 screenw = 600
@@ -15,6 +17,9 @@ tablero = ([0,0,0,0,0,0],
 [0,0,0,0,0,0],
 [0,0,0,0,0,0],
 [0,0,0,0,0,0])
+
+posX = 0
+posY = 4
 
 dado = random.randint(1,6)
 # def pieza():
@@ -34,15 +39,18 @@ def mov():
         posX += dado
     elif (posX + dado) >= 6:
         tablero[posY][posX] = 0
-        tablero[posY-1][6-((posX+dado)-5)] = 1
+        posY -= 1
+        if posY % 2 != 0:
+            tablero[posY][6-((posX+dado)-5)] = 1
+    
+    GameState == False
         
-posX = 3
-posY = 4
-
-mov()
-
-print(posX, posY)
-print(tablero)
+while GameState:
+    mov()
+    # if pygame.mouse.get_pressed() == True:
+    #     mov()
+    print(posX, posY)
+    print(tablero)
 
     #tablero = pygame.image.load("tablero.jpg")
     #bg = pygame.transform.scale(tablero, (screenw, screenh))
