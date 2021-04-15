@@ -16,7 +16,7 @@ pos = 0
 
 tablero = ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
-preg = (['1', '2', '3', '4', '5', '6', '7', '8', ' ', ' ', ' ', ' ', ' '])
+preg = (['1', '2', '3', '4', '5', '6', '7', '8', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
 dado = 0
 
@@ -35,21 +35,21 @@ tablero[pos] = 1
     
 x = 0
 
-while x != 9:
-    print("precione enter para lanzar dado")
+while x != 30 or pos >= 36:
+    print("presione enter para lanzar dado")
     input()
     dado = random.randint(1, 6)
+    print("dado", dado)
+
+    tablero[pos] = 0
+    pos += dado
+    tablero[pos] = 1
+
+    print(tablero)
 
     for i in range(len(tablero)):
         if tablero[i] == 1:
             print("preg")
-            print(preg[i+1])
-            print
-    
-    tablero[pos] = 0
-    tablero[pos+dado] = 1
-    pos += dado
+            print(preg[i+1])   
         
-    print("dado", dado)
-    print(tablero)
     x += 1
