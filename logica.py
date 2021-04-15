@@ -16,43 +16,40 @@ pos = 0
 
 tablero = ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
-preg = (['1', '2', '3', '4', '5', '6', '7', '8'])
+preg = (['1', '2', '3', '4', '5', '6', '7', '8', ' ', ' ', ' ', ' ', ' '])
 
 dado = 0
 
-tablero[pos] = 0
+tablero[pos] = 1
 
+    # dado = random.randint(1, 6)
 
+    # for i in range(len(tablero)):
+    #     if tablero[i] == 1:
+    #         print("preg")
+    #         print(preg[i+1])
+  
+    # tablero[pos] = 0
+    # tablero[pos+dado] = 1
+    # pos += dado
     
-print(pos)
+x = 0
 
-pos += dado
-print(dado)
-
-
-while GameState:
+while x != 9:
+    print("precione enter para lanzar dado")
+    input()
     dado = random.randint(1, 6)
 
     for i in range(len(tablero)):
         if tablero[i] == 1:
             print("preg")
             print(preg[i+1])
-
-    for i in range(5):
-        tablero[pos+dado] = 1
-        pos += dado
-        print(tablero)
+            print
     
-    # for i in range(len(tablero)):
-    #     if tablero[i] == 1:
-    #         print("preg")
-    #         print(preg[i+1])
-    
-    while dado != 9:
-        print("precione enter para lanzar dado")
-        input()
-        print(dado)
-    
-    print(pos)
-
-    GameState != GameState
+    tablero[pos] = 0
+    tablero[pos+dado] = 1
+    pos += dado
+        
+    print("dado", dado)
+    print(tablero)
+    x += 1
