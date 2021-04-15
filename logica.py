@@ -1,13 +1,11 @@
 import random
 import pygame
-import numpy as np
 
 pygame.init()
 
-GameState = True
-
 black = ( 0, 0, 0)
 
+#cambia esta variable para cambiar la posicion de inicio
 pos = 0
 
 # screenw = 600
@@ -43,13 +41,16 @@ while x != 30 or pos >= 36:
 
     tablero[pos] = 0
     pos += dado
-    tablero[pos] = 1
+    if pos >= 36:
+        pos = 36
+        tablero[pos] = 1
+        print("enhorabuena, has ganado!! Puedes pedir tu punto extra de la evaluacion a Monica")
 
+    tablero[pos] = 1
     print(tablero)
 
     for i in range(len(tablero)):
         if tablero[i] == 1:
-            print("preg")
-            print(preg[i+1])   
+            print("preg:", preg[i+1])
         
     x += 1
