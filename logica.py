@@ -27,7 +27,7 @@ tablero[pos] = 1
 #dibujar el tablero y el rectangulo de inicio
 def tabla():
     pygame.draw.rect(screen, white, (cellsize, cellsize*6, cellsize, cellsize), 3)
-
+    pygame.draw.rect(screen, white, (cellsize*7, cellsize, cellsize, cellsize), 3)
     for x in range(1, 8):
         for y in range(1, 7):
             pygame.draw.line(screen, white, ( x*cellsize, cellsize), ( x*cellsize, cellsize*6))
@@ -97,8 +97,10 @@ def movficha():
 x = 0
 clock = pygame.time.Clock()
 
-while x != 30 or pos >= 33:
+while x != 30 or pos >= 32:
     clock.tick(10)
+    
+    tabla()
 
     print("presione enter para lanzar dado")
     input()
@@ -112,8 +114,8 @@ while x != 30 or pos >= 33:
     preg[pos] = ' '
     pos += dado
 
-    if pos >= 33:
-        pos = 33
+    if pos >= 32:
+        pos = 32
         tablero[pos] = 1
         print("enhorabuena, has ganado!! Puedes pedir tu punto extra de la evaluacion a Monica")
 
@@ -147,12 +149,12 @@ while x != 30 or pos >= 33:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
-    elif pos >= 25 and pos < 31:
+    elif pos >= 25 and pos < 32:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
 
-    print("preg:", preg[pos]) 
+    print("preg:", preg[pos - 1]) 
     
     pygame.display.flip()
     x += 1
