@@ -27,7 +27,7 @@ tablero[pos] = 1
 #dibujar el tablero y el rectangulo de inicio
 def tabla():
     pygame.draw.rect(screen, white, (cellsize, cellsize*6, cellsize, cellsize), 3)
-    pygame.draw.rect(screen, white, (cellsize*7, cellsize, cellsize, cellsize), 3)
+    pygame.draw.rect(screen, white, (cellsize*6, cellsize, cellsize, cellsize), 3)
     for x in range(1, 8):
         for y in range(1, 7):
             pygame.draw.line(screen, white, ( x*cellsize, cellsize), ( x*cellsize, cellsize*6))
@@ -121,34 +121,37 @@ while x != 30 or pos >= 32:
 
     tablero[pos] = 1
     print(tablero)
+    print(pos)
     
     if pos == 4:
         for p in range(1, 7):
             if preg[p] == ' ':
+                screen.fill(black)
+                tabla()
                 print("elige una pregunta del bloque anterior antes de continuar")
+                pos += 7
 
     # movficha()
     if pos >= pos and pos < 7:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*pos) + (cellsize/2), (cellsize*5 + (cellsize/2))), cellsize/3)
-        print("hola")
+        
     elif pos >= 7 and pos < 13:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-6)) + (cellsize/2), (cellsize*4 + (cellsize/2))), cellsize/3)
-        print("hola2")
-        pygame.display.update()
-        pygame.display.flip()
+        
     elif pos >= 13 and pos < 19:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-12)) + (cellsize/2), (cellsize*3 + (cellsize/2))), cellsize/3)
-        print("hola3")
+        
     elif pos >= 19 and pos < 25:
         screen.fill(black)
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
+    
     elif pos >= 25 and pos < 32:
         screen.fill(black)
         tabla()
@@ -156,5 +159,4 @@ while x != 30 or pos >= 32:
 
     print("preg:", preg[pos - 1]) 
     
-    pygame.display.flip()
     x += 1
