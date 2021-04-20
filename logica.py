@@ -109,6 +109,7 @@ while x != 30 or pos >= 33:
     tabla()
 
     tablero[pos] = 0
+    preg[pos] = ' '
     pos += dado
 
     if pos >= 33:
@@ -118,42 +119,40 @@ while x != 30 or pos >= 33:
 
     tablero[pos] = 1
     print(tablero)
+    
+    if pos == 4:
+        for p in range(1, 7):
+            if preg[p] == ' ':
+                print("elige una pregunta del bloque anterior antes de continuar")
 
     # movficha()
-    for i in range(0, 32):
-        if tablero[i] == 1:
-            if i >= 1 and i < 7:
-                # screen.fill(black)
-                # tabla()
-                pygame.draw.circle(screen, blue, ((cellsize*i) + (cellsize/2), (cellsize*5 + (cellsize/2))), cellsize/3)
-                print("hola")
-            elif i >= 7 and i < 13:
-                # screen.fill(black)
-                # tabla()
-                pygame.draw.circle(screen, blue, ((cellsize*(i-6)) + (cellsize/2), (cellsize*4 + (cellsize/2))), cellsize/3)
-                print("hola2")
-                pygame.display.update()
-                pygame.display.flip()
+    if pos >= pos and pos < 7:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*pos) + (cellsize/2), (cellsize*5 + (cellsize/2))), cellsize/3)
+        print("hola")
+    elif pos >= 7 and pos < 13:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-6)) + (cellsize/2), (cellsize*4 + (cellsize/2))), cellsize/3)
+        print("hola2")
+        pygame.display.update()
+        pygame.display.flip()
+    elif pos >= 13 and pos < 19:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-12)) + (cellsize/2), (cellsize*3 + (cellsize/2))), cellsize/3)
+        print("hola3")
+    elif pos >= 19 and pos < 25:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
+    elif pos >= 25 and pos < 31:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
 
-            elif i >= 13 and i < 19:
-                screen.fill(black)
-                tabla()
-                pygame.draw.circle(screen, blue, ((cellsize*(i-12)) + (cellsize/2), (cellsize*3 + (cellsize/2))), cellsize/3)
-                print("hola3")
-            elif i >= 19 and i < 25:
-                screen.fill(black)
-                tabla()
-                pygame.draw.circle(screen, blue, ((cellsize*(i-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
-            elif i >= 25 and i < 31:
-                screen.fill(black)
-                tabla()
-                pygame.draw.circle(screen, blue, ((cellsize*(i-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
-        else:
-            print("no se que pasa")
-    for i in range(len(tablero)):
-        if tablero[i] == 1:
-            print("preg:", preg[i])
-    
+    print("preg:", preg[pos]) 
     
     pygame.display.flip()
     x += 1
