@@ -27,7 +27,8 @@ tablero[pos] = 1
 
 #dibujar el tablero y el rectangulo de inicio
 def tabla():
-    pygame.draw.line(screen, green, ((cellsize*3)+cellsize/2, (cellsize*5)+cellsize/2), ((cellsize*4)+cellsize/2, (cellsize*4)+cellsize/2), 3)
+    pygame.draw.line(screen, green, ((cellsize*4)+cellsize/2, (cellsize*5)+cellsize/2), ((cellsize*5)+cellsize/2, (cellsize*4)+cellsize/2), 3)
+    pygame.draw.line(screen, green, ((cellsize*2)+cellsize/2, (cellsize*4)+cellsize/2), ((cellsize*4)+cellsize/2, (cellsize*3)+cellsize/2), 3)
     pygame.draw.rect(screen, white, (cellsize, cellsize*6, cellsize, cellsize), 3)
     pygame.draw.rect(screen, white, (cellsize*6, cellsize, cellsize, cellsize), 3)
     for x in range(1, 8):
@@ -35,6 +36,32 @@ def tabla():
             pygame.draw.line(screen, white, ( x*cellsize, cellsize), ( x*cellsize, cellsize*6))
             pygame.draw.line(screen, white, ( cellsize, y*cellsize), ( cellsize*7, y*cellsize))
             pygame.display.update()
+
+def movFicha():
+    if pos >= 1 and pos < 7:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*pos) + (cellsize/2), (cellsize*5 + (cellsize/2))), cellsize/3)
+        
+    elif pos >= 7 and pos < 13:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-6)) + (cellsize/2), (cellsize*4 + (cellsize/2))), cellsize/3)
+        
+    elif pos >= 13 and pos < 19:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-12)) + (cellsize/2), (cellsize*3 + (cellsize/2))), cellsize/3)
+
+    elif pos >= 19 and pos < 25:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
+    
+    elif pos >= 25 and pos < 32:
+        screen.fill(black)
+        tabla()
+        pygame.draw.circle(screen, blue, ((cellsize*(pos-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
 
 x = 0
 clock = pygame.time.Clock()
@@ -68,42 +95,28 @@ while x != 30 or pos >= 32:
     
     if pos == 4:
         for i in range( 1, 4):
+            tablero[pos] == 0
             if preg[i] != ' ':
-                tablero[4] == 0
                 pos += 6
                 tablero[pos] == 1
                 print("elige una pregunta del bloque anterior")
             elif preg[i] == ' ':
-                tablero[4] == 0
                 pos += 6
                 tablero[pos] == 1
             break
-
-    if pos >= 1 and pos < 7:
-        screen.fill(black)
-        tabla()
-        pygame.draw.circle(screen, blue, ((cellsize*pos) + (cellsize/2), (cellsize*5 + (cellsize/2))), cellsize/3)
-        
-    elif pos >= 7 and pos < 13:
-        screen.fill(black)
-        tabla()
-        pygame.draw.circle(screen, blue, ((cellsize*(pos-6)) + (cellsize/2), (cellsize*4 + (cellsize/2))), cellsize/3)
-        
-    elif pos >= 13 and pos < 19:
-        screen.fill(black)
-        tabla()
-        pygame.draw.circle(screen, blue, ((cellsize*(pos-12)) + (cellsize/2), (cellsize*3 + (cellsize/2))), cellsize/3)
-
-    elif pos >= 19 and pos < 25:
-        screen.fill(black)
-        tabla()
-        pygame.draw.circle(screen, blue, ((cellsize*(pos-18)) + (cellsize/2), (cellsize*2 + (cellsize/2))), cellsize/3)
     
-    elif pos >= 25 and pos < 32:
-        screen.fill(black)
-        tabla()
-        pygame.draw.circle(screen, blue, ((cellsize*(pos-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
+    if pos == 8:
+            tablero[pos] == 0
+            if preg[7] != ' ':
+                pos += 8
+                tablero[pos] == 1
+                print("elige una pregunta del bloque anterior")
+            elif preg[7] == ' ':
+                pos += 8
+                tablero[pos] == 1
 
+    
+    movFicha()
     print("preg:", preg[pos]) 
     
     x += 1
