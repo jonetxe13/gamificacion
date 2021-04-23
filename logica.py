@@ -27,6 +27,8 @@ tablero[pos] = 1
 
 #dibujar el tablero y el rectangulo de inicio
 def tabla():
+    pygame.draw.line(screen, green, ((cellsize*3)+cellsize/2, (cellsize*2)+cellsize/2), ((cellsize*4)+cellsize/2, (cellsize)+cellsize/2), 3)
+    pygame.draw.line(screen, green, ((cellsize*5)+cellsize/2, (cellsize*3)+cellsize/2), ((cellsize*4)+cellsize/2, (cellsize*2)+cellsize/2), 3)
     pygame.draw.line(screen, green, ((cellsize*4)+cellsize/2, (cellsize*5)+cellsize/2), ((cellsize*5)+cellsize/2, (cellsize*4)+cellsize/2), 3)
     pygame.draw.line(screen, green, ((cellsize*2)+cellsize/2, (cellsize*4)+cellsize/2), ((cellsize*4)+cellsize/2, (cellsize*3)+cellsize/2), 3)
     pygame.draw.rect(screen, white, (cellsize, cellsize*6, cellsize, cellsize), 3)
@@ -63,6 +65,56 @@ def movFicha():
         tabla()
         pygame.draw.circle(screen, blue, ((cellsize*(pos-24)) + (cellsize/2), (cellsize + (cellsize/2))), cellsize/3)
 
+def escaleras():
+    global pos 
+    if pos == 4:
+        for i in range( 1, 4):
+            tablero[pos] == 0
+            if preg[i] != ' ':
+                pos += 7
+                tablero[pos] == 1
+                print("elige una pregunta del bloque anterior")
+            elif preg[i] == ' ':
+                pos += 7
+                tablero[pos] == 1
+            break
+    
+    if pos == 8:
+            tablero[pos] == 0
+            if preg[7] != ' ':
+                pos += 8
+                tablero[pos] == 1
+                print("elige una pregunta del bloque anterior")
+            elif preg[7] == ' ':
+                pos += 8
+                tablero[pos] == 1
+    
+    if pos == 17:
+        for i in range( 13, 17):
+            tablero[pos] == 0
+            if preg[i] != ' ':
+                pos += 5
+                tablero[pos] == 1
+                print("elige una pregunta del bloque anterior")
+            elif preg[i] == ' ':
+                pos += 5
+                tablero[pos] == 1
+            break
+
+    if pos == 21:
+        for i in range( 19, 21):
+            tablero[pos] == 0
+            if preg[i] != ' ':
+                pos += 7
+                tablero[pos] == 1
+                print("elige una pregunta del bloque anterior")
+            elif preg[i] == ' ':
+                pos += 7
+                tablero[pos] == 1
+            break
+
+
+
 x = 0
 clock = pygame.time.Clock()
 
@@ -93,30 +145,10 @@ while x != 30 or pos >= 32:
     print(tablero)
     print(pos)
     
-    if pos == 4:
-        for i in range( 1, 4):
-            tablero[pos] == 0
-            if preg[i] != ' ':
-                pos += 7
-                tablero[pos] == 1
-                print("elige una pregunta del bloque anterior")
-            elif preg[i] == ' ':
-                pos += 7
-                tablero[pos] == 1
-            break
-    
-    if pos == 8:
-            tablero[pos] == 0
-            if preg[7] != ' ':
-                pos += 8
-                tablero[pos] == 1
-                print("elige una pregunta del bloque anterior")
-            elif preg[7] == ' ':
-                pos += 8
-                tablero[pos] == 1
+    escaleras()
 
-    
     movFicha()
+    
     print("preg:", preg[pos]) 
     
     x += 1
